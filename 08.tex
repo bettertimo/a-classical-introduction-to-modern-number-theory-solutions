@@ -1,0 +1,277 @@
+\documentclass[../Chapter.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Gauss and Jacobi Sums}
+
+\subsection*{Exercise 8.1}
+
+The case $a=0$ is trivial because $N(x^m=0)=0=\sum \chi(a)$. So assume $a\neq 0$. If $x^m=a$ has a solution, say $b$, then we know it has $d$ solutions. On the other hand, for each $\chi$ where $\chi^d=\epsilon$, we have $\chi(a)=\chi(b^m)=\chi^m(a)=\epsilon(a)=1$. So $\sum\chi(a)=\sum 1=d$ because the number of characters of order dividing $d$ is exactly $d$.
+
+If $x^m=a$ has no solution, we need to show that $S:=\sum\chi(a)=0$. Note that since $\gcd(m,p-1)=d=\gcd(d,p-1)$, we know $x^m=a$ has no solution iff $x^d=a$ has no solution. So by Prop 8.1.4 (p. 90), there exists a character $\rho$ s.t. $\rho^d=\epsilon$ and $\rho(a)\neq1$. Notice that $\rho(a)\cdot S=\rho(a)\sum\chi(a)=\sum\rho\chi(a)=\sum\chi(a)=S$. (We've used the fact that the characters of order dividing $d$ form a group.) This implies $S\cdot(\rho(a)-1)=0$ and hence $S=0$, as desired.
+
+\subsection*{Exercise 8.2}
+
+(Correction: The result is not true. Consider $p=7$ and the equation $x+x^4=1$, then $N(x+x^4=1)=1$ and $N(x+x^2=1)=0$. The correct statement should be $\sum_i a_ix_{\color{red}i}^{m_i}=b$ and $\sum_i a_ix_{\color{red}i}^{d_i}=b$ have the same number of solutions.)
+
+By Ex 8.1 and Prop 8.1.5 (p. 90), we have $N(x^m=a)=\sum \chi(a)=N(x^d=a)$ where the sum is over all characters of order dividing $d$. Consequently, we have
+\begin{align*}
+N\left(\sum_{i=1}^r a_i{x_i}^{m_i}=b\right) &= \sum N(x_1^{m_1}=u_1)\cdots N(x_r^{m_r}=u_r) \\
+&= \sum N(x_1^{d_1}=u_1)\cdots N(x_r^{d_r}=u_r) = N\left(\sum_{i=1}^r a_i{x_i}^{d_i}=b\right)
+\end{align*}
+where the sums are over all $r$-tuples $(u_1,\ldots,u_r)$ s.t. $a_1u_1+\cdots a_ru_r=b$.
+
+\subsection*{Exercise 8.3}
+
+Following the hint, we have
+\begin{align*}
+J(\chi,\rho) &= \sum_{a+b=1} \chi(a)\rho(b)=\sum_{a+b=1} \chi(a)\cdot\left(N(x^2=b)-1\right) \\
+&= \sum_{a+b=1} \chi(a)\cdot N(x^2=b)-\sum_a \chi(a)
+\end{align*}
+First note that the second sum is zero. Moreover, we know $N(x^2=0)=1$, $N(x^2=b)=2$ if $b\neq0$ is a square and zero otherwise. These imply $$J(\chi,\rho) = \chi(1) + \sum_{\substack{a+b=1\\ b\neq0 \text{ is a} \\ \text{square}}} \chi(a)\cdot 2$$
+Since the $p-1$ elements $1^2,2^2,\ldots,(p-1)^2$ is exactly two copies of all non-zero sqaures, so we have $J(\chi,\rho) = \chi(1) + \sum_{t\neq0} \chi(1-t^2) = \sum_t \chi(1-t^2)$.
+
+\subsection*{Exercise 8.4}
+
+Using the change of variables $t=(k/2)(u+1)$, we have
+\begin{align*}
+\sum_t \chi(t(k-t)) &= \sum_u \chi\left(\frac{k}{2}(u+1)\cdot\left(k-\frac{k}{2}(u+1)\right)\right) \\
+&= \sum_u \chi\left(\frac{k^2}{2^2}(u+1)(1-u)\right) \\ 
+&= \chi\left(\frac{k^2}{2^2}\right)\sum_u \chi(1-u^2) = \chi\left(\frac{k^2}{2^2}\right) J(\chi,\rho)
+\end{align*}
+We've used Ex 8.3 in the last equality.
+
+\subsection*{Exercise 8.5}
+
+Following the hint, we have
+\begin{align*}
+g(\chi)^2 &= \Biggl(\sum_x \chi(x)\zeta^x\Biggr)\Biggl(\sum_y \chi(y)\zeta^y\Biggr) = \sum_{x,y} \chi(xy)\zeta^{x+y} \\
+&= \sum_t \left(\sum_{x+y=t} \chi(xy)\right)\zeta^t = \sum_t \left(\sum_x \chi(x(t-x))\right)\zeta^t \\
+&= \sum_x \chi(-x^2) + \sum_{t\neq0}\left(\sum_x \chi(x(t-x))\right)\zeta^t
+\end{align*}
+Note that the first the sum $\sum_x \chi(-x^2) = \chi(-1)\sum_x \chi^2(x) =0$ because $\chi^2\neq\epsilon$. So by Ex 8.4, we have
+$$g(\chi)^2 = \sum_{t\neq0} \chi\left(\frac{t^2}{2^2}\right)J(\chi,\rho)\zeta^t = \chi(2)^{-2}J(\chi,\rho) \sum_{t\neq0}\chi^2(t)\zeta^t = \chi(2)^{-2}J(\chi,\rho)g(\chi^2)$$
+
+\subsection*{Exercise 8.6}
+
+By Thm 1(d) (p. 93) and Ex 8.5, we have $J(\chi,\chi)g(\chi^2)=g(\chi)^2=\chi(2)^{-2}J(\chi,\rho)g(\chi^2)$. So $J(\chi,\chi)=\chi(2)^{-2}J(\chi,\rho)$.
+
+Alternatively, we can prove this by using Ex 8.4 and the definition of Jacobi sum. $J(\chi,\chi) = \sum_{a+b=1} \chi(a)\chi(b) = \sum_a \chi(a(1-a)) = \chi(1^2/2^2)J(\chi,\rho) = \chi(2)^{-2}J(\chi,\rho)$.
+
+\subsection*{Exercise 8.7}
+
+Since $\ord(\chi)=4$, we know $\ord(\chi^2)=2$. And since $\hat{G}$ is cyclic, there's only one character of order $2$. So $\chi^2=\rho$.
+
+By Thm 1(d) (p. 93), $g(\chi)^2=J(\chi,\chi)g(\rho)$. So $g(\chi)^4=J(\chi,\chi)^2g(\rho)^2$. Note that since $p\equiv1\pmod{4}$, by Thm 1 of Ch 6 (p. 75), $g(\rho)^2=\sqrt{p}^2=p$. And so $g(\chi)^4=pJ(\chi,\chi)^2$. On the other hand, by Prop 8.3.3 (p. 96), $g(\chi)^4=\chi(-1)pJ(\chi,\chi)J(\chi,\rho)$. Combining these two we obtain $J(\chi,\chi)=\chi(-1)J(\chi,\rho)$. (See Prop 9.9.1.)
+
+\subsection*{Exercise 8.8}
+
+For the following, $\sum_\lambda$ denotes the sum over all characters of order dividing $m$. Set $d=\gcd(m,p-1)$. Then by Ex 8.1 together with the fact that $\lambda^m=\epsilon \iff \lambda^d=\epsilon$, we have
+\begin{align*}
+\sum_\lambda J(\chi,\lambda) = \sum_\lambda \sum_{a+b=1} \chi(a)\lambda(b) = \sum_{a+b=1} \chi(a)\cdot\left(\sum_\lambda \lambda(b)\right) = \sum_{a+b=1}\chi(a)\cdot N(x^m=b)
+\end{align*}
+We know $N(x^m=0)=1$. And $N(x^m=b)=d$ if $b\neq0$ is an $m$-th power and zero otherwise. These imply $$\sum_\lambda J(\chi,\lambda) = \chi(1) + \sum_{\substack{a+b=1\\ b\neq0 \text{ is an } \\ m\text{-th power}}} \chi(a)\cdot d$$
+Since the $p-1$ elements $1^m,2^m,\ldots,(p-1)^m$ is exactly $d$ copies of all non-zero $m$-th powers. (See \nameref{Bonus 8.1}.) Hence, we have $\sum_\lambda J(\chi,\lambda) = \chi(1) + \sum_{t\neq0} \chi(1-t^m) = \sum_t \chi(1-t^m)$.
+
+We have $|\sum_t \chi(1-t^m)| = |\sum_\lambda J(\chi,\lambda)| =  |\sum_{\lambda\neq\epsilon} J(\chi,\lambda)| \leq \sum_{\lambda\neq\epsilon} |J(\chi,\lambda)|$. For $\lambda\neq\epsilon$, note that if $\chi\lambda\neq\epsilon$, then $|J(\chi,\lambda)|=\sqrt{p}$. And if $\chi\lambda=\epsilon$, then $|J(\chi,\lambda)| = |J(\chi,\chi^{-1})| = |-\chi(-1)| = 1\leq\sqrt{p}$. Hence, we have $|\sum_t \chi(1-t^m)|\leq (m-1)\sqrt{p}$.
+
+\subsection*{Exercise 8.9}
+
+From Ex 8.5 we have $g(\chi)^2=\chi(2)^{-2}J(\chi,\rho)g(\chi^2)$. Multiply both sides by $g(\chi)$ we obtain $g(\chi)^3=\chi(2)^{-2}J(\chi,\rho)g(\chi^2)g(\chi)$. First note that $\chi(2)^{-2}=\chi^{-2}(2)=\chi(2)$. Moreover, $g(\chi^2)g(\chi)=g(\chi^{-1})g(\chi)=\chi(-1)p=p$ by the remark of Prop 8.2.2 (p. 92). Hence, $g(\chi)^3=\chi(2)J(\chi,\rho)p=p\pi$ where $\pi=\chi(2)J(\chi,\rho)$.
+
+Note that this result together with Ex 8.6 give us $$g(\chi)^3=\chi(2)J(\chi,\rho)p=\chi(2)\chi(2)^2J(\chi,\chi)p=pJ(\chi,\chi)$$
+(See Lem 1 and its Cor of Ch 9 (p. 115).)
+
+\subsection*{Exercise 8.10}
+
+The powers of $\chi\rho$ are $\chi\rho,\chi^2,\rho,\chi\rho^2,\chi^2\rho,\epsilon$. So $\ord(\chi\rho)=6$.
+
+From the equation $J(\chi,\rho)=g(\chi)g(\rho)/g(\chi\rho)$ we have $$g(\chi\rho)^6=\frac{g(\chi)^6g(\rho)^6}{J(\chi,\rho)^6}$$ By Ex 8.9 we have $g(\chi)^6=p^2\chi(2)^2J(\chi,\rho)^2$. On the other hand, by Thm 1 of Ch 6 (p. 75), we have $g(\rho)^6=g(\rho)^2g(\rho)^4=(-1)^{(p-1)/2}p^3$. So
+\begin{align*}
+g(\chi\rho)^6 = \frac{p^2\chi(2)^2J(\chi,\rho)^2\cdot(-1)^{(p-1)/2}p^3}{J(\chi,\rho)^6} = (-1)^{(p-1)/2}p^5\frac{\chi(2)^2}{J(\chi,\rho)^4}
+\end{align*}
+First note that $\chi(2)^2=\chi^2(2)=\chi^8(2)=\chi^2(2)^4=\ovl{\chi}(2)^4=\ovl{\chi(2)}^4$. And since $p=|J(\chi,\rho)|^2=J(\chi,\rho)\ovl{J(\chi,\rho)}$, we have
+\begin{align*}
+g(\chi\rho)^6 = (-1)^{(p-1)/2}p\cdot J(\chi,\rho)^4\ovl{J(\chi,\rho)}^4\frac{\ovl{\chi(2)}^4}{J(\chi,\rho)^4} = (-1)^{(p-1)/2}p\ovl{\pi}^4
+\end{align*}
+where $\pi=\chi(2)J(\chi,\rho)$.
+
+\subsection*{Exercise 8.14}
+
+By Prop 8.3.3 (p. 96), $g(\chi)^n=\chi(-1)p\prod_{i=1}^{n-2} J(\chi,\chi^i)$. Since for $t\neq0$ we have $\chi(t)^n=\chi^n(t)=\epsilon(t)=1$. This means $\chi(t)$ is an $n$-th root of unity (an algebraic integer) and so $\chi(t)\in\ZZ[\zeta]$. Thus, we have $\chi(-1)\in\ZZ[\zeta]$ and $J(\chi,\chi^i)=\sum_{a+b=1} \chi(a)\chi^i(b)=\sum_{a+b=1} \chi(ab^i)\in\ZZ[\zeta]$ for each $i=1,\ldots,n-2$. This shows that $g(\chi)\in\ZZ[\zeta]$.
+
+\subsection*{Exercise 8.15}
+
+Let $N$ be the number of solutions to the equation $-x^3+y^2=D$, then 
+\begin{align*}
+N &= \sum_{-u_1+u_2=D} N(x^3=u_1)N(y^2=u_2) \\
+&= \sum_{-u_1+u_2=D} (1+\chi(u_1)+\chi^2(u_1))(1+\rho(u_2)) \\
+&= p + \sum_{-u_1+u_2=D} \chi(u_1)\rho(u_2) + \sum_{-u_1+u_2=D} \chi^2(u_1)\rho(u_2)
+\end{align*}
+For $D=0$, $\sum_{-u_1+u_2=0} \chi(u_1)\rho(u_2) = \sum_{u_1} \chi(u_1)\rho(u_1) = \sum_{u_1} \chi\rho(u_1) = 0$. Similarly, the second sum is also zero. Thus, $N=p$. On the other hand, since $\pi=\chi\rho(0)J(\chi,\rho)=0$, so we are done in this case.
+
+Assume $D\neq0$, set $u_1=-Dt_1$ and $u_2=Dt_2$. Then the first sum becomes
+\begin{align*}
+\sum_{-u_1+u_2=D} \chi(u_1)\rho(u_2) &= \sum_{t_1+t_2=1} \chi(-Dt_1)\rho(Dt_2) = \chi(-1)\chi(D)\rho(D)\sum_{t_1+t_2=1} \chi(t_1)\rho(t_2) \\
+&= \chi\rho(D)J(\chi,\rho) = \pi
+\end{align*}
+Similarly, the second sum becomes
+\begin{align*}
+\sum_{-u_1+u_2=D} \chi^2(u_1)\rho(u_2) = \chi^2\rho(D)J(\chi^2,\rho) = \ovl{\chi\rho}(D)J(\ovl{\chi},\ovl{\rho}) = \ovl{\chi\rho(D)J(\chi,\rho)} = \ovl{\pi}
+\end{align*}
+Hence, $N=p+\pi+\ovl{\pi}$.
+
+Suppose now $\chi(2)=1$, then by Ex 8.9 we have $g(\chi)^3=p\chi(2)J(\chi,\rho)=pJ(\chi,\rho)$. Since the values of $\chi$ is either $1,\omega,\omega^2$ where $\omega=e^{2\pi i/3}$ and the values of $\rho$ is either $1,-1$, we may write $J(\chi,\rho)=a+b\omega$ where $a,b\in\ZZ$. Similar to the proof of Prop 8.3.4 (p. 96), we have
+\begin{align*}
+-1\equiv g(\chi)^3 = pJ(\chi,\rho) \equiv a+b\omega \pmod{3} \\
+-1\equiv g(\ovl{\chi})^3 = p\ovl{J(\chi,\rho)} \equiv a+b\ovl{\omega} \pmod{3}
+\end{align*}
+So we have the same conclusion as Prop 8.3.4 that $b\equiv0\pmod{3}$ and $a\equiv-1\pmod{3}$. Setting $D=1$ and using a similar argument in page 97, we find that $N(y^2=x^3+1)=p+\chi\rho(1)J(\chi,\rho)+\ovl{\chi\rho(1)J(\chi,\rho)}=p+2\re J(\chi,\rho)=p+A$.
+
+When $p=31\equiv1\pmod{6}$. $\FF_{31}^\times=\langle3\rangle$ and $\chi(2)=\chi(3^{24})=\chi(3)^{24}=\epsilon(3)=1$. Write $4p=4\cdot31=4^2+27\cdot2^2$. Then $A=4\equiv1\pmod{3}$. So the number of solutions to the equation $y^2=x^3+1$ in $\FF_{31}$ is $31+4=35$. It's easy to verify this result with the help of computer.
+
+\subsection*{Exercise 8.16}
+
+Using the result in page 98, we have $$N=N(x^4+y^4=1)=p+1-\delta_4(-1)4+\sum_{\substack{i,j=1,2,3\\ i+j\neq4}} J(\chi^i,\chi^j)$$ where $\delta_4(-1)$ is one if $-1$ is a fourth power and zero otherwise. Note that from $\chi^2=\rho=\ovl{\rho}$ and $\chi^3=\ovl{\chi}$, the sum becomes 
+\begin{align*}
+&J(\chi,\chi)+J(\chi,\chi^2)+J(\chi^2,\chi)+J(\chi^2,\chi^3)+J(\chi^3,\chi^2)+J(\chi^3,\chi^3) \\
+={} &J(\chi,\chi)+J(\chi,\rho)+J(\rho,\chi)+J(\ovl{\rho},\ovl{\chi})+J(\ovl{\chi},\ovl{\rho})+J(\ovl{\chi},\ovl{\chi}) \\
+={} &2\re J(\chi,\chi)+4\re J(\chi,\rho)
+\end{align*}
+The result follows.
+
+\subsection*{Exercise 8.17}
+
+By Ex 8.16 and Ex 8.7, we have
+\begin{align*}
+N &= p+1-\delta_4(-1)4+2\re\chi(-1)J(\chi,\rho)+4\re J(\chi,\rho) \\
+&= p+1-\delta_4(-1)4-2\re\chi(-1)\pi-4\re\pi.
+\end{align*}
+Let $g$ be a generator of $\FF_p^\times$. We know $-1=g^{(p-1)/2}$.
+
+(a) If $p\equiv1\pmod{8}$. Write $p=8k+1$. So $-1=g^{4k}$ is a fourth power. Moreover, $\chi(-1)=\chi(g^{4k})=1$. Hence, $N=p+1-4-2\re\pi-4\re\pi=p-3-6\re\pi$.
+
+(b) If $p\equiv5\pmod{8}$. Write $p=8k+5$. So $-1=g^{4k+2}$ is not a fourth power. Moreover, $\chi(-1)=\chi(g^{4k+2})=\chi(g^{4k})\chi(g^2)=\rho(g)=-1$. Hence, $N=p+1+2\re\pi-4\re\pi=p+1-2\re\pi$.
+
+\subsection*{Exercise 8.18}
+
+From $a^2+b^2=|\pi|^2=|-J(\chi,\rho)|^2=p$ we get $b^2=p-a^2$. And since for $a=4k\pm1$ we have $a^2\equiv1\pmod{8}$. So $b^2\equiv p-1\pmod{8}$. Also note that $\re\pi=a$.
+
+(a) If $p\equiv1\pmod{8}$, then $b^2\equiv0\pmod{8}$. This means $4\mid b$ and so $a\equiv 1\pmod{4}$. Take $A=a$, then $N=p-3-6\re\pi=p-3-6A$.
+
+(b) If $p\equiv5\pmod{8}$, then $b^2\equiv4\pmod{8}$. This means $4\nmid b$ and so $a\equiv-1\pmod{4}$. Take $A=-a$, then $N=p+1-2\re\pi=p+1+2A$.
+
+\subsection*{Exercise 8.21}
+
+We know $N(x^d=0)=1$. And $N(x^d=r)=d$ if $r\neq0$ is a $d$-th power and zero otherwise. Note also that since $\gcd(d,p-1)=d$, so $1^d,2^d,\ldots,(p-1)^d$ consist of $d$ copies of $d$-th powers in $(\ZZ/p\ZZ)^\times$. (See \nameref{Bonus 8.1}.) These imply $$\rhs=\sum_r N(x^d=r)\zeta^{ar} = 1+\sum_{\substack{r\neq0 \text{ is a } \\ d\text{-th power}}} d\zeta^{ar} = \zeta^{a\cdot0^d} + \sum_{x\neq0} \zeta^{ax^d} = \sum_x \zeta^{ax^d} = \lhs$$
+
+\subsection*{Exercise 8.22}
+
+From Ex 8.21 and Prop 8.1.5 (p. 90), we have
+\begin{align*}
+\sum_x \zeta^{ax^d} &= \sum_r N(x^d=r)\zeta^{ar} = \sum_r \left(\sum_{\chi^d=\epsilon} \chi(r)\right)\zeta^{ar} \\
+&= \sum_r \epsilon(r)\zeta^{ar} + \sum_r\left(\sum_{\chi^d=\epsilon,\chi\neq\epsilon} \chi(r)\right)\zeta^{ar}
+\end{align*}
+Note that the first sum is zero because $p\nmid a$. So after changing the order of double sums, we have $\sum_x \zeta^{ax^d} = \sum_\chi g_a(\chi)$ where the sum is over all $\chi$ s.t. $\chi^d=\epsilon,\chi\neq\epsilon$.
+
+\subsection*{Exercise 8.26}
+
+(a) \begin{align*}
+N(y^2+x^4=1) &= \sum_{a+b=1} N(y^2=a)N(x^4=b) = \sum_{i=0}^1\sum_{j=0}^3 J(\rho^i,\chi^j) \\
+&= p+J(\rho,\chi)+J(\rho,\rho)+J(\rho,\chi^3) = p+J(\rho,\chi)-\rho(-1)+J(\ovl{\rho},\ovl{\chi}) \\
+&= p-1+2\re J(\rho,\chi) = p-1+2a
+\end{align*}
+
+(b) \begin{align*}
+N(y^2=1-x^4) = \sum_t N(y^2=1-t^4) = \sum _t (1+\rho(1-t^4)) = p+\sum_x \rho(1-x^4)
+\end{align*}
+
+(c) Since the results in (a) and (b) should be the same, we have $2a=1+\sum_x \rho(1-x^4)$. Observe that the sum gives us
+\begin{align*}
+\sum_x \rho(1-x^4) &= \sum_x (1-x^4)^{(p-1)/2} = \sum_x (1-x^4)^{2m} = \sum_x \sum_{k=0}^{2m} \binom{2m}{k}(-x^4)^k \\
+&= \sum_{k=0}^{2m}\binom{2m}{k}(-1)^k\cdot\left(\sum_{x\neq0} x^{4k}\right)
+\end{align*}
+For $k=m,2m\implies 4k=p-1,2(p-1)$. So $\sum_{x\neq0} x^{4k}\equiv\sum_{x\neq0} 1 = p-1 \pmod{p}$. For the other $k$'s, we claim that $\sum_{x\neq0} x^{4k}\equiv0\pmod{p}$.
+
+Set $d=\gcd(4k,p-1)$. From \nameref{Bonus 8.1} we know that $1^{4k},2^{4k},\ldots,(p-1)^{4k}$ consist of $d$ copies of $4k$-th powers in $(\ZZ/p\ZZ)^\times$. So $\sum_{x\neq0} x^{4k}\equiv d\cdot\sum (4k\text{-th power}) \pmod{p}$. Write $(\ZZ/p\ZZ)^\times=\langle g\rangle$. Note that from the argument in \nameref{Bonus 8.1}, it's easy to see that $\sum (4k\text{-th power}) = \sum_{i=1}^{(p-1)/d} g^{4ki} = (g^{4k(p-1)/d}-1)(g^{4k})(g^{4k}-1)^{-1}$. Moreover, we have $g^{4k(p-1)/d}-1\equiv 1^{4k}-1=0\pmod{p}$ because $g^{(p-1)/d}$ and $1$ are in the same "subset", i.e., they are identical after raising to the $4k$-th power. This shows that $\sum (4k\text{-th power}) \equiv0\pmod{p}$ and hence so is $\sum_{x\neq0} x^{4k}$. This completes the claim.
+
+From our claim we obtain
+\begin{align*}
+\sum_x \rho(1-x^4) &= \sum_{k=0}^{2m}\binom{2m}{k}(-1)^k\cdot\left(\sum_{x\neq0} x^{4k}\right) \\
+&\equiv \binom{2m}{m}(-1)^{m}(p-1)+\binom{2m}{2m}(-1)^{2m}(p-1) \\
+&\equiv -\binom{2m}{m}(-1)^{(p-1)/4} - 1 \pmod{p}
+\end{align*}
+So $2a\equiv 1-\tbinom{2m}{m}(-1)^{(p-1)/4}-1 = -(-1)^{(p-1)/4}\tbinom{2m}{m} \pmod{p}$.
+
+(d) For $p=13$, we have $m=3$ and $N(y^2+x^4=1)=6$. Thus $2a=6-13+1=-6$. On the other hand, $-(-1)^3\tbinom{6}{3}=20$. So indeed we have $-6\equiv20\pmod{13}$.
+
+For $p=17$, we have $m=4$ and $N(y^2+x^4=1)=14$. Thus $2a=14-17+1=-2$. On the other hand, $-(-1)^4\tbinom{8}{4}=-70$. So indeed we have $-2\equiv-70\pmod{17}$.
+
+For $p=29$, we have $m=7$ and $N(y^2+x^4=1)=38$. Thus $2a=38-29+1=10$. On the other hand, $-(-1)^7\tbinom{14}{7}=3432$. So indeed we have $10\equiv3432\pmod{29}$.
+
+\subsection*{Exercise 8.27}
+
+(a) \begin{align*}
+N(y^2=1-x^3) = \sum_t N(y^2=1-t^3) = \sum _t (1+\rho(1-t^3)) = p+\sum_x \rho(1-x^3)
+\end{align*}
+
+(b) \begin{align*}
+N(y^2+x^3=1) &= \sum_{a+b=1} N(y^2=a)N(x^3=b) = \sum_{i=0}^1\sum_{j=0}^2 J(\rho^i,\chi^j) \\
+&= p+J(\rho,\chi)+J(\rho,\chi^2) = p+J(\rho,\chi)+J(\ovl{\rho},\ovl{\chi}) \\
+&= p+2\re J(\chi,\rho)
+\end{align*}
+
+(c) $2\re J(\chi,\rho)=2a-b$. And since the results in (a) and (b) should be the same, we have $2a-b=\sum_x \rho(1-x^3)$. Observe that the sum gives us
+\begin{align*}
+\sum_x \rho(1-x^3) &= \sum_x (1-x^3)^{(p-1)/2} = \sum_x \sum_{k=0}^{(p-1)/2} \binom{\frac{p-1}{2}}{k}(-x^3)^k \\
+&= \sum_{k=0}^{(p-1)/2}\binom{\frac{p-1}{2}}{k}(-1)^k\cdot\left(\sum_{x\neq0} x^{3k}\right)
+\end{align*}
+For $k=(p-1)/3$, we have $\sum_{x\neq0} x^{3k} = \sum_{x\neq0} x^{p-1} \equiv\sum_{x\neq0} 1 = p-1 \pmod{p}$. For the other $k$'s, we claim that $\sum_{x\neq0} x^{3k}\equiv0\pmod{p}$.
+
+Set $d=\gcd(3k,p-1)$. From \nameref{Bonus 8.1} we know that $1^{3k},2^{3k},\ldots,(p-1)^{3k}$ consist of $d$ copies of $3k$-th powers in $(\ZZ/p\ZZ)^\times$. So $\sum_{x\neq0} x^{3k}\equiv d\cdot\sum (3k\text{-th power}) \pmod{p}$. Write $(\ZZ/p\ZZ)^\times=\langle g\rangle$. Note that from the argument in \nameref{Bonus 8.1}, it's easy to see that $\sum (3k\text{-th power}) = \sum_{i=1}^{(p-1)/d} g^{3ki} = (g^{3k(p-1)/d}-1)(g^{3k})(g^{3k}-1)^{-1}$. Moreover, we have $g^{3k(p-1)/d}-1\equiv 1^{3k}-1=0\pmod{p}$ because $g^{(p-1)/d}$ and $1$ are in the same "subset", i.e., they are identical after raising to the $3k$-th power. This shows that $\sum (3k\text{-th power}) \equiv0\pmod{p}$ and hence so is $\sum_{x\neq0} x^{3k}$. This completes the claim.
+
+From our claim we obtain
+\begin{align*}
+2a-b &= \sum_x \rho(1-x^3) = \sum_{k=0}^{(p-1)/2}\binom{\frac{p-1}{2}}{k}(-1)^k\cdot\left(\sum_{x\neq0} x^{3k}\right) \\
+&\equiv \binom{\frac{p-1}{2}}{\frac{p-1}{3}}(-1)^{(p-1)/3}(p-1) \equiv -\binom{\frac{p-1}{2}}{\frac{p-1}{3}}(-1)^{(p-1)/3} \pmod{p}
+\end{align*}
+Note that $(p-1)/3$ is even because otherwise we would have $p$ is even. And of course we assume $p$ is an odd prime. This implies $(-1)^{(p-1)/3}=1$ and hence $2a-b\equiv -\tbinom{(p-1)/2}{(p-1)/3} \pmod{p}$.
+
+
+\subsection*{Exercise 8.28}
+
+(a) Clearly, $\FF_p^\times = \{x\mid 1\leq x\leq (p-1)/2\}\cup\{p-x\mid 1\leq x\leq(p-1)/2\}$. So we have
+\begin{align*}
+\sum_{x=1}^{p-1} x\chi(x) &= \sum_{x=1}^{(p-1)/2} x\chi(x) + \sum_{x=1}^{(p-1)/2} (p-x)\chi(p-x) \\
+&= \sum_{x=1}^{(p-1)/2} x\chi(x) + p\chi(-1)\sum_{x=1}^{(p-1)/2} \chi(x-p) - \chi(-1)\sum_{x=1}^{(p-1)/2} x\chi(x-p) \\
+&= \sum_{x=1}^{(p-1)/2} x\chi(x) - p\sum_{x=1}^{(p-1)/2} \chi(x) + \sum_{x=1}^{(p-1)/2} x\chi(x) \\
+&= 2\sum_{x=1}^{(p-1)/2} x\chi(x) - p\sum_{x=1}^{(p-1)/2} \chi(x)
+\end{align*}
+
+(b) It's easy to check that $\FF_p^\times = \{2x\mid 1\leq x\leq (p-1)/2\}\cup\{p-2x\mid 1\leq x\leq(p-1)/2\}$. So we have
+\begin{align*}
+\sum_{x=1}^{p-1} x\chi(x) &= \sum_{x=1}^{(p-1)/2} 2x\chi(2x) + \sum_{x=1}^{(p-1)/2} (p-2x)\chi(p-2x) \\
+&= 2\chi(2)\sum_{x=1}^{(p-1)/2} x\chi(x) + p\chi(-1)\sum_{x=1}^{(p-1)/2} \chi(2x-p) - 2\chi(-1)\sum_{x=1}^{(p-1)/2} x\chi(2x-p) \\
+&= 2\chi(2)\sum_{x=1}^{(p-1)/2} x\chi(x) - p\sum_{x=1}^{(p-1)/2} \chi(2x) + 2\chi(2)\sum_{x=1}^{(p-1)/2} x\chi(x) \\
+&= 4\chi(2)\sum_{x=1}^{(p-1)/2} x\chi(x) - p\chi(2)\sum_{x=1}^{(p-1)/2} \chi(x) 
+\end{align*}
+
+(c) (Correction: The equation should be $\sum_{x=1}^{p-1}x\chi(x)/p={\color{red}-}1/3\sum_{x=1}^{(p-1)/2} \chi(x)$. Just consider the easiest case $p=3$.)
+
+Since the results in (a) and (b) should be the same, we have $$2\sum_{x=1}^{(p-1)/2} x\chi(x) - p\sum_{x=1}^{(p-1)/2} \chi(x) = 4\chi(2)\sum_{x=1}^{(p-1)/2} x\chi(x) - p\chi(2)\sum_{x=1}^{(p-1)/2} \chi(x)$$
+
+If $p\equiv3\pmod{8}$, then $\chi(2)=-1$. So we have $6\sum_{x=1}^{(p-1)/2} x\chi(x) = 2p\sum_{x=1}^{(p-1)/2} \chi(x)$. Using this relation together with the equation in (a), we obtain $$\sum_{x=1}^{p-1} x\chi(x) = \frac{2}{3}p\sum_{x=1}^{(p-1)/2} \chi(x) - p\sum_{x=1}^{(p-1)/2} \chi(x) = \frac{-1}{3}p\sum_{x=1}^{(p-1)/2} \chi(x)$$ The result now follows.
+
+(d) (Correction: The equation should be $\sum_{x=1}^{p-1}x\chi(x)/p={\color{red}-}\sum_{x=1}^{(p-1)/2} \chi(x)$. Just consider the easiest case $p=7$.)
+
+Similar to (c), if $p\equiv7\pmod{8}$, then $\chi(2)=1$. So we have $\sum_{x=1}^{(p-1)/2} x\chi(x)=0$. And by (a) again, we obtain $$\sum_{x=1}^{p-1} x\chi(x) = -p\sum_{x=1}^{(p-1)/2} \chi(x)$$ The result now follows.
+
+\subsection*{Bonus 8.1} \label{Bonus 8.1}
+
+Write $(\ZZ/p\ZZ)^\times=\langle g\rangle$. Let $k\in\NN$ and set $d=\gcd(k,p-1)$. We claim that $1^k,2^k,\ldots,(p-1)^k$ consist of $d$ copies of $k$-th powers. (This means $\#(k\text{-th power})=(p-1)/d$.)
+
+For $1\leq i,j\leq p-1$, note that $g^{ik}\equiv g^{jk} \pmod{p} \iff p-1\mid (i-j)k \iff (p-1)/d\mid (i-j)\cdot k/d \iff (p-1)/d\mid i-j \iff i\equiv j \pmod{(p-1)/d}$. So $g^i,g^{i+(p-1)/d},g^{i+2(p-1)/d},\ldots,g^{i+(d-1)(p-1)/d}$ are all the same when raising to the $k$-th power. There are $d$ of them. So we may write $(\ZZ/p\ZZ)^\times$ as a disjoint union of $(p-1)/d$ subsets, each of them has cardinality $d$ and gives us one $k$-th power. This completes the proof.
+
+As some special cases, if $d=1$, then $\{1^k,2^k,\ldots,(p-1)^k\}=(\ZZ/p\ZZ)^\times$. And if $k\mid p-1$, then $d=\gcd(k,p-1)=k$. So $1^k,2^k,\ldots,(p-1)^k$ consist of $k$ copies of $k$-th powers.
+
+\end{document}

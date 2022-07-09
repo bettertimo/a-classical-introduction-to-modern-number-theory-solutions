@@ -1,0 +1,109 @@
+\documentclass[../Chapter.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Cubic and Biquadratic Reciprocity}
+
+\subsection*{Exercise 9.1}
+
+Set $\lambda:=1-\omega$ and $D:=\ZZ[\omega]$. By Prop 9.2.1 (p. 111), $\#(D/\lambda D)=3$. So it's sufficient to show that the residue classes of $0,1,-1$ are distinct in $D/\lambda D$. Obviously, we have $0\not\equiv1\pmod{\lambda}$. And note that $0\equiv-1\pmod{\lambda} \iff \lambda\mid1 \iff \lambda$ is a unit, which is clearly not the case. Lastly, $1\equiv-1\pmod{\lambda} \iff \lambda\mid2$. A simple calculation shows that this is also not the case. This completes the proof.
+
+\subsection*{Exercise 9.2}
+
+This follows easily by Prop 9.1.1 (p. 109), Prop 9.3.5 (p. 113), and the fact that $D$ is a UFD. See \nameref{Bonus 9.1} for the classification of primes.
+
+\subsection*{Exercise 9.3}
+
+$\chi_\gamma(\omega)=\omega^{(N(\gamma)-1)/3}$. Note that $N(\gamma)=(3m-1)^2-(3m-1)(3n)+(3n)^2\equiv3(m+n)+1\pmod{9}$. Write $N(\gamma)=9k+3(m+n)+1$, then $\chi_\gamma(\omega)=\omega^{(N(\gamma)-1)/3}=\omega^{3k+m+n}=\omega^{m+n}$.
+
+\subsection*{Exercise 9.4}
+
+First note that $\gamma=(3m-1)+3n\omega=-1+3(m+n)-3n\lambda$ and so $\gamma\equiv-1+3(m+n) \pmod{3\lambda}$. Also, $\#(D/\lambda D)=\#(D/3D)=3$ by Prop 9.2.1 (p. 111). So there's an isomorphism $D/\lambda D\simeq D/3D$. Clearly, the residue classes of $-1,0,1$ in $D/\lambda D$ (see Ex 9.1) correspond to the residue classes of $-1,0,1$ in $D/3D$.
+
+Now, $\gamma\equiv-1+3(m+n)\equiv8\pmod{3\lambda} \iff m+n\equiv3\equiv0\pmod{\lambda}$. (Recall that $3=-\omega^2\lambda^2$.) And by the above isomorphism, this is equivalent to $m+n\equiv0\pmod{3}$. So in this case $\chi_\gamma(\omega)=1$ by Ex 9.3. The other two cases are similar, we skip the details.
+
+In particular, if $q\equiv2\pmod{3}$. Write $q=3m-1$, then $\chi_\gamma(\omega)=\omega^m$. Note that $m\equiv0,1,2\pmod{3}$ correspond to $q\equiv8,2,5\pmod{9}$, respectively. This completes the proof.
+
+\subsection*{Exercise 9.5}
+
+$\chi_\gamma(3)=\chi_\gamma(-\omega^2\lambda^2)=\chi_\gamma(-1)\chi_\gamma(\omega)^2\chi_\gamma(\lambda)^2=1\cdot\omega^{2m+2n}\cdot\omega^{4m}=\omega^{2n}$.
+
+\subsection*{Exercise 9.6}
+
+We use the same notation as in Ex 9.3. And recall that $\chi_\gamma(\lambda)=\omega^{2m}$.
+
+(a) $\chi_\gamma(\lambda)=1 \iff 2m\equiv0\pmod{3} \iff m\equiv0\pmod{3} \iff a\equiv8\pmod{9}$. So in this case we have $\gamma\equiv8,8+3\omega,8+6\omega\pmod{9}$.
+
+(a) $\chi_\gamma(\lambda)=\omega \iff 2m\equiv1\pmod{3} \iff m\equiv2\pmod{3} \iff a\equiv5\pmod{9}$. So in this case we have $\gamma\equiv5,5+3\omega,5+6\omega\pmod{9}$.
+
+(a) $\chi_\gamma(\lambda)=\omega^2 \iff 2m\equiv2\pmod{3} \iff m\equiv1\pmod{3} \iff a\equiv2\pmod{9}$. So in this case we have $\gamma\equiv2,2+3\omega,2+6\omega\pmod{9}$.
+
+\subsection*{Exercise 9.7}
+
+$(1-2\omega)(\omega)=2+3\omega$ is primary. $-7-3\omega$ is itself primary. $(3-\omega)(\omega^2)=-4-3\omega$ is primary.
+
+\subsection*{Exercise 9.8}
+
+We use Prop 9.1.4 (p. 110).
+
+From $x^3-1=(x-1)(x-\omega)(x-\omega^2)$ we have $7=(2-\omega)(2-\omega^2)=(2-\omega)(3+\omega)$. This gives us $21=3\cdot7=-\omega^2\lambda^2(2-\omega)(3+\omega)$.
+
+$45=5\cdot3^2=5\omega\lambda^4$. Lastly, write $143=11\cdot13$. Set $\pi=a+b\omega$ and $13=\pi\ovl{\pi}$, then $13=N(\pi)=a^2-ab+b^2$. Take $a=3,b=-1$. So $13=11\cdot13=11(3-\omega)(4+\omega)$.
+
+\subsection*{Exercise 9.9}
+
+We may assume $\alpha\not\sim\lambda$ because the cubes in $(D/\lambda D)^\times$ is clear. (See Ex 9.1.) From Prop 7.1.2 (p. 80) we have $x^3=\ovl{\alpha}$ has a solution in $(D/\pi D)^\times \iff \ovl{\alpha}^{(N(\pi)-1)/3}=\ovl{1}$ in $(D/\pi D)^\times \iff \alpha^{(N(\pi)-1)/3}-1\in\pi D \iff \alpha^{(N(\pi)-1)/3}\equiv1\pmod{\pi}$. Consequently, we have $\#(\text{cubes in }(D/\pi D)^\times)=\#(\text{solutions to the equation } x^{(N(\pi)-1)/3}\equiv1\pmod{\pi})=(N(\pi)-1)/3$.
+
+\subsection*{Exercise 9.10}
+
+Since $D/5D$ is a finite field with $N(5)=25$ elements, we have $\alpha^{24}=1$ for each $\alpha\in(D/5D)^\times$. So $x^{24}-1=\prod_{\alpha\neq0} (x-\alpha)$.
+
+\subsection*{Exercise 9.11}
+
+$(N(5)-1)/3=8$ cubes.
+
+\subsection*{Exercise 9.12}
+
+Note that $a+b\omega\equiv1\pmod{5} \iff a\equiv1\pmod{5}$ and $b\equiv0\pmod{5}$. Also, we know $(\omega\lambda)^2=-3$. From this it's easy to see that $\ord((\omega\lambda)^2)=4$. Consequently, $\ord(\omega\lambda)=8$. For $\omega^2\lambda=\omega\cdot\omega\lambda$, since $\gcd(\ord(\omega),\ord(\omega\lambda))=\gcd(3,8)=1$, we have $\ord(\omega^2\lambda)=\ord(\omega)\ord(\lambda)=3\cdot8=24$.
+
+\subsection*{Exercise 9.13}
+
+By Ex 9.9 and Ex 9.11, it's sufficient to check the eight numbers all satisfy $x^8\equiv1\pmod{5}$. For $x=1,2,3,4$ this is easy. And for $x=1+2\omega$, since $x^2=9$ we have $x^4=81\equiv1\pmod{5}$. So the desired condition holds. Note that this implies $2(1+2\omega),3(1+2\omega),4(1+2\omega)$ are all cubes. They are congruent to $2+4\omega,3+\omega,4+3\omega \pmod{5}$, respectively. So we are done.
+
+\subsection*{Exercise 9.14}
+
+Since $x^3\equiv5\pmod{\pi}$ is solvable iff $x^3\equiv5\pmod{\pi'}$ is solvable for $\pi'\sim\pi$, we may assume $\pi$ is primary. By the cubic reciprocity law (p. 114) we have $\chi_\pi(5)=\chi_5(\pi)$. So $x^3\equiv5\pmod{\pi}$ is solvable iff $x^3\equiv\pi\pmod{5}$ is solvable. And from Ex 9.13 this is equivalent to say $\pi\equiv1,2,3,4,1+2\omega,2+4\omega,3+\omega,4+3\omega \pmod{5}$.
+
+\subsection*{Exercise 9.15}
+
+Suppose there exists $h\in\ZZ$ s.t. $h^3\equiv a\pmod{p}$. Then $p\mid h^3-a \implies \pi\mid h^3-a \implies h^3\equiv a\pmod{\pi}$. So $\chi_\pi(a)=1$. Conversely, suppose $\chi_\pi(a)=1$, then $x^3\equiv a\pmod{\pi}$ is solvable. Since the elements in $D/\pi D$ are represented by rational integers (recall that $D/\pi D\simeq D/pD$), there exists $h\in\ZZ$ s.t. $h^3\equiv a\pmod{\pi}$. This means $\pi$ divides $h^3-a$ and thus so is $\ovl{\pi}$. Thus, $p\mid (h^3-a)^2$ and so $p\mid h^3-a$. This means $x^3\equiv a\pmod{p}$ is solvable in $\ZZ$.
+
+\subsection*{Exercise 9.16}
+
+(Correction: $x^3\equiv2-3\omega\pmod{11}$ {\color{red}is} solvable as we will see later. The given hint is totally nonsense!) Let $\pi=2-3\omega$, a primary prime, and $p=\pi\ovl{\pi}=19$. By the cubic reciprocity law (p. 114), we have $\chi_{11}(\pi)=\chi_\pi(11)$. So $x^3\equiv\pi\pmod{11}$ is solvable iff $x^3\equiv11\pmod{\pi}$ is solvable, i.e., $\chi_\pi(11)=1$. By Ex 9.15, this is equivalent to say $x^3\equiv11\pmod{19}$ is solvable in $\ZZ$. A simple calculation shows that this is indeed the case because for instance $5$ is one of the solutions. Hence, $x^3\equiv\pi=2-3\omega\pmod{11}$ is solvable.
+
+With the help of computer, it's easy to find a solution. For instance, take $x=1-3\omega$, then $x^3=-53-36\omega\equiv2-3\omega\pmod{11}$.
+
+\subsection*{Exercise 9.43}
+
+Let $f(x)=x^3-3px-Ap$, then $f'(x)=3x^2-3p=0$ at $x=\pm\sqrt{p}$. It follows that $f(x)$ has local maximum at $x=-\sqrt{p}$ and local minimum at $x=\sqrt{p}$. Note also that $|2\re(\omega^kg(\chi_\pi))|\leq2|g(\chi_\pi)|=2\sqrt{p}$ for $k=0,1,2$, so the roots of $f(x)$ lie in the interval $(-2\sqrt{p},2\sqrt{p})$. These two observations imply the result. (One can easily check that all the roots don't occur at the endpoints. For example, if $f(2\sqrt{p})=0$, then $p=A^2/4$ and so $B=0$. This implies $b=0$ and $A=2a$. (See the Cor of Prop 8.3.4 (p. 97).) So $p=a^2$, which is absurd.)
+
+\subsection*{Bonus 9.1} \label{Bonus 9.1}
+
+Let's classify all prime elements in $D=\ZZ[\omega]$. (See p. 110.) By Prop 9.1.2, it's enough to check $\pi\in D$ with $N(\pi)=p,p^2$ where $p$ is a rational prime. For $N(\pi)=p$, by Prop 9.1.3 we know $\pi$ is a prime. We now claim that $N(\pi)\equiv0,1\pmod{3}$. If $N(\pi)=\pi\cdot\ovl{\pi}=p\equiv2\pmod{3}$, then by Prop 9.1.4 we have $p$ is a prime in $D$, which is impossible because we know $\ovl{\pi}$ is also a prime.
+
+For $N(\pi)=p^2$, we know from Prop 9.1.2 that $\pi\sim p$. So by Prop 9.1.4, $\pi$ is a prime in $D \iff p$ is a prime in $D\iff p\equiv 2\pmod{3}$. This means $\pi$ is associated to a rational prime $p\equiv 2\pmod{3}$.
+
+Hence, $\pi\in D$ is a prime iff $N(\pi)=p$, a rational prime (in this case we have $N(\pi)\equiv1\pmod{3}$ or $p=3$), or $\pi$ is associated to a rational prime $p\equiv 2\pmod{3}$. Note that these two are mutually exclusive.
+
+\subsection*{Bonus 9.2}
+
+There's another viewpoint of Prop 9.2.1 (p. 111) by considering the splitting of prime $p\ZZ$ in $D$. Note that $N(\pi)=p,p^2$ implies $p\ZZ$ is a prime ideal lying under $\pi D$. Let $f$ be the corresponding inertial degree. We first assume $\pi\not\sim1-\omega$. In this case we have $N(\pi)\neq3$. And by \nameref{Bonus 9.1} there are two cases we have to consider.
+
+If $N(\pi)=p\equiv1\pmod{3}$, then $pD=\pi\ovl{\pi}D=\pi D\cdot\ovl{\pi}D$. These two are different prime ideals because $\pi\not\sim\ovl{\pi}$. So we have $f=1$ and hence $\#(D/\pi D)=(\ZZ/p\ZZ)^f=p=N(\pi)$.
+
+If $\pi$ is associated to a rational prime $p\equiv 2\pmod{3}$, then $pD=\pi D$, i.e., $p$ is inert in $D$. So we have $f=2$ and hence $\#(D/\pi D)=(\ZZ/p\ZZ)^f=p^2=N(\pi)$.
+
+Now suppose $\pi\sim1-\omega$, then by Prop 9.1.4, $3D=(1-\omega)^2$. So we have $f=1$ and hence $\#(D/\pi D)=(\ZZ/3\ZZ)^f=3=N(\pi)$.
+
+\end{document}
