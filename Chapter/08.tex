@@ -1,4 +1,4 @@
-\documentclass[../Chapter.tex]{subfiles}
+\documentclass[../I&R.tex]{subfiles}
 
 \begin{document}
 
@@ -41,6 +41,13 @@ Using the change of variables $t=(k/2)(u+1)$, we have
 \end{align*}
 We've used Ex 8.3 in the last equality.
 
+We give another, and yet more intuitive proof.\footnote{B. C. Berndt and R. J. Evans. \textit{Sums of Gauss, Jacobi, and Jacobsthal}. Journal of number theory, 11(3) (1979), 349–398.} For each $s\in\FF_p$, consider $t(k-t)\equiv s\pmod{p}$. By completing the square, this implies $(2t-k)^2\equiv k^2-4s\pmod{p}$. So the number of solutions is $1+\rho(k^2-4s)$. (We've used Thm 8.1.5 (p. 90).) Hence, we have
+\begin{align*}
+\sum_t \chi(t(k-t)) &= \sum_s \left(1+\rho(k^2-4s)\right)\chi(s) = \sum_s \rho(k^2-4s)\chi(s) \\
+&= \sum_s \rho(k^2)\rho(1-4s/k^2)\chi(s) = \sum_u \rho(1-u)\chi(k^2u/4) \\
+&= \chi(k^2/4)J(\chi,\rho)
+\end{align*} 
+
 \subsection*{Exercise 8.5}
 
 Following the hint, we have
@@ -54,7 +61,7 @@ $$g(\chi)^2 = \sum_{t\neq0} \chi\left(\frac{t^2}{2^2}\right)J(\chi,\rho)\zeta^t 
 
 \subsection*{Exercise 8.6}
 
-By Thm 1(d) (p. 93) and Ex 8.5, we have $J(\chi,\chi)g(\chi^2)=g(\chi)^2=\chi(2)^{-2}J(\chi,\rho)g(\chi^2)$. So $J(\chi,\chi)=\chi(2)^{-2}J(\chi,\rho)$.
+First note that if $\chi^2=\epsilon$, then $\chi=\rho$ is the Legendre symbol. And the equation is trivial. So we assume $\chi^2\neq\epsilon$. Then by Thm 1(d) (p. 93) and Ex 8.5, we have $J(\chi,\chi)g(\chi^2)=g(\chi)^2=\chi(2)^{-2}J(\chi,\rho)g(\chi^2)$. So $J(\chi,\chi)=\chi(2)^{-2}J(\chi,\rho)$.
 
 Alternatively, we can prove this by using Ex 8.4 and the definition of Jacobi sum. $J(\chi,\chi) = \sum_{a+b=1} \chi(a)\chi(b) = \sum_a \chi(a(1-a)) = \chi(1^2/2^2)J(\chi,\rho) = \chi(2)^{-2}J(\chi,\rho)$.
 
@@ -80,7 +87,7 @@ We have $|\sum_t \chi(1-t^m)| = |\sum_\lambda J(\chi,\lambda)| =  |\sum_{\lambda
 From Ex 8.5 we have $g(\chi)^2=\chi(2)^{-2}J(\chi,\rho)g(\chi^2)$. Multiply both sides by $g(\chi)$ we obtain $g(\chi)^3=\chi(2)^{-2}J(\chi,\rho)g(\chi^2)g(\chi)$. First note that $\chi(2)^{-2}=\chi^{-2}(2)=\chi(2)$. Moreover, $g(\chi^2)g(\chi)=g(\chi^{-1})g(\chi)=\chi(-1)p=p$ by the remark of Prop 8.2.2 (p. 92). Hence, $g(\chi)^3=\chi(2)J(\chi,\rho)p=p\pi$ where $\pi=\chi(2)J(\chi,\rho)$.
 
 Note that this result together with Ex 8.6 give us $$g(\chi)^3=\chi(2)J(\chi,\rho)p=\chi(2)\chi(2)^2J(\chi,\chi)p=pJ(\chi,\chi)$$
-(See Lem 1 and its Cor of Ch 9 (p. 115).)
+(See also: Lem 1 and its Cor in Ch 9 (p. 115).)
 
 \subsection*{Exercise 8.10}
 
