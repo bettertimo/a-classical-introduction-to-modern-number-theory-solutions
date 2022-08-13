@@ -5,4 +5,4 @@ This is a partial solution guide to the exercises from the book *A Classical Int
 * [Solutions Main](https://bettertimo.com/wp-content/uploads/2022/08/IR.pdf)
 * [Chapter 6](https://bettertimo.com/wp-content/uploads/2022/08/IR-06.pdf)
 * [Chapter 8](https://bettertimo.com/wp-content/uploads/2022/08/IR-08.pdf)
-* [Chapter 9](https://bettertimo.com/wp-content/uploads/2022/08/IR-09.pdf.pdf)
+* [Chapter 9](https://bettertimo.com/wp-content/uploads/2022/08/IR-09.pdf)
